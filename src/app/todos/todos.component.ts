@@ -21,7 +21,7 @@ export class TodosComponent implements OnInit {
 
   listTodos() {
     try {
-      client.models.Todo.observeQuery().subscribe({
+      client.models.Course.observeQuery().subscribe({
         next: ({ items, isSynced }) => {
           this.todos = items;
         },
@@ -33,8 +33,8 @@ export class TodosComponent implements OnInit {
 
   createTodo() {
     try {
-      client.models.Todo.create({
-        content: window.prompt('Todo content'),
+      client.models.Course.create({
+        title: window.prompt('Todo content') ?? '',
       });
       this.listTodos();
     } catch (error) {
