@@ -1,6 +1,26 @@
-<amplify-authenticator>
-    <ng-template amplifySlot="authenticated" let-user="user" let-signOut="signOut">
-        <h1>Welcome {{ user.username }}!</h1>
-        <button (click)="signOut()">Sign Out</button>
-    </ng-template>
-</amplify-authenticator>
+<section>
+    @if(!signup){
+
+    <form [formGroup]="applyForm" (submit)="submitApplication()">
+        <label for="Teacher">Teacher</label>
+        <input id="Teacher" type="radio" formControlName="role" value="Teacher" />
+        <label for="Student">Student</label>
+        <input id="Student" type="radio" formControlName="role" value="Student" />
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email" />
+        <label for="password">Password</label>
+        <input id="passwor" type="password" formControlName="password" />
+        <button type="submit" class="primary">Apply now</button>
+    </form>
+    }
+
+    @else {
+    <form [formGroup]="verifyForm" (submit)="submitVerification()">
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email" />
+        <label for="confirmationCode">Confirmation Code</label>
+        <input id="confirmationCode" type="text" formControlName="confirmationCode" />
+        <button type="submit" class="primary">Verify</button>
+    </form>
+    }
+</section>
